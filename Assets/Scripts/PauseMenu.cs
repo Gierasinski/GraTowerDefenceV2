@@ -10,6 +10,9 @@ public class PauseMenu : MonoBehaviour
     public string levelToLoad = "MainMenu";
 
     public SceneFader sceneFader;
+    public TimeManager timeManager;
+
+    public GameObject hud;
 
     private void Update()
     {
@@ -21,15 +24,17 @@ public class PauseMenu : MonoBehaviour
 
     public void Toggle()
     {
+        hud.SetActive(ui.activeSelf);
         ui.SetActive(!ui.activeSelf);
-
         if (ui.activeSelf)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
+            timeManager.SetTimeScale(0f);
         }
         else
         {
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
+            timeManager.SetTimeScale(1f);
         }
     }
     public void Retry()

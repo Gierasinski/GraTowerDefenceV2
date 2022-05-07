@@ -112,3 +112,9 @@ MonoBehaviour:
   notEnoughMoneyColor: {r: 0.6792453, g: 0.17621931, b: 0.17621931, a: 0}
   positionOffset: {x: 0, y: 0.5, z: 0}
   turret: {fileID: 0}
+  turretBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  isUpgraded: 0
