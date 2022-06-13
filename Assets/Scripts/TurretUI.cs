@@ -49,4 +49,12 @@ public class TurretUI : MonoBehaviour
         target.SellTurret();
         BuildManager.instance.DeselectNode();
     }
+    public void ChangeFireRate(float x)
+    {
+        target.changeFireRate(x);
+    }
+    public float GetFireRate()
+    {
+        return target.getFireRate();
+    }
 }

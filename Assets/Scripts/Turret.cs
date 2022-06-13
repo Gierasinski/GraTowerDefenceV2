@@ -22,10 +22,14 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    private Renderer turretRenderer;
+    private Color newColor;
+
 
     private void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
     }
     void UpdateTarget()
     {
@@ -50,6 +54,9 @@ public class Turret : MonoBehaviour
         {
             target = null;
         }
+
+
+
 
 
     }
@@ -88,11 +95,50 @@ public class Turret : MonoBehaviour
             bullet.Seek(target);
         }
 
+
+  
+
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void changeFireRate(float x)
+    {
+        this.fireRate = x;
+
+    }
+    public float getFireRate()
+    {
+        return this.fireRate; 
+    }
+    public void changeFireRange(float x)
+    {
+        this.range = x;
+
+    }
+    public float getFireRange()
+    {
+        return this.range;
+    }
+    public Vector3 getScale()
+    {
+        return this.transform.localScale;
+    }
+    public void setScale(Vector3 v)
+    {
+        this.transform.localScale = v;
+    }
+
+    public void setColor(Color c)
+    {
+        foreach (var rend in GetComponentsInChildren<Renderer>(true))
+        {
+            rend.material.color = c;
+        }
+
     }
 }

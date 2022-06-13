@@ -46,21 +46,27 @@ public class WaveSpawner : MonoBehaviour
     }
     IEnumerator SpawnWave()
     {
-        Wave wave = waves[waveNumber];
-        for(int i = 0; i < wave.count; i++)
-        {
-            SpawnEnemy(wave.enemy);
-            yield return new WaitForSeconds(1f / wave.rate);
-        }
-
-        PlayerStats.Rounds++;
-        waveNumber ++;
-
-        if(waveNumber == waves.Length)
+        if (waveNumber == waves.Length)
         {
             Debug.Log("LEVEL WON!");
             this.enabled = false;
+            PlayerStats.gameWon = true;
+
         }
+        else
+        {
+            Wave wave = waves[waveNumber];
+
+            for (int i = 0; i < wave.count; i++)
+            {
+                SpawnEnemy(wave.enemy);
+                yield return new WaitForSeconds(1f / wave.rate);
+            }
+
+            PlayerStats.Rounds++;
+            waveNumber++;
+        }
+
 
     }
     void SpawnEnemy(GameObject enemy)

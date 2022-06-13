@@ -12,15 +12,21 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject gameOverUI;
+    public GameObject gameWinUI;
     void Update()
     {
         if (GameIsOver)
             return;
         //if (Input.GetKeyDown("e"))
           //  EndGame();
+        
         if(PlayerStats.Lives <= 0)
         {
             EndGame();
+        }
+        if (PlayerStats.gameWon)
+        {
+            gameWinUI.SetActive(true);
         }
     }
 
@@ -30,5 +36,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver!");
 
         gameOverUI.SetActive(true);
+    }
+    public void WinGame()
+    {
+        GameIsOver = true;
+        Debug.Log("You Win!");
+
+        gameWinUI.SetActive(true);
     }
 }

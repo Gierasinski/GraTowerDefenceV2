@@ -12,11 +12,16 @@ public class PlayerStats : MonoBehaviour
 
     public static int Rounds;
 
+    public static bool gameWon;
+    public bool gameWonBool = false;
+
     private void Start()
     {
 
         Money = startMoney;
         Lives = startLives;
+
+        gameWon = gameWonBool;
 
         Rounds = 0;
      }

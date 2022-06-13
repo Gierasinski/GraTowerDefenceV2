@@ -40,7 +40,14 @@ public class Node : MonoBehaviour
 
         if(turret != null)
         {
-            buildManager.SelectNode(this);
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
+            {
+                buildManager.SelectNode(this, true);
+            }else
+            {
+                buildManager.SelectNode(this, false);
+            }
+                
             return;
         }
         if (!buildManager.CanBuild)
@@ -121,5 +128,33 @@ public class Node : MonoBehaviour
     private void OnMouseExit()
     {
         rend.material.color = startColor;
+    }
+    public void changeFireRate(float x)
+    {
+        turret.GetComponent<Turret>().changeFireRate(x);
+    }
+    public float getFireRate()
+    {
+        return turret.GetComponent<Turret>().getFireRate();
+    }
+    public void changeFireRange(float x)
+    {
+        turret.GetComponent<Turret>().changeFireRange(x);
+    }
+    public float getFireRange()
+    {
+        return turret.GetComponent<Turret>().getFireRange();
+    }
+    public Vector3 getScale()
+    {
+        return turret.GetComponent<Turret>().getScale();
+    }
+    public void setScale(Vector3 v)
+    {
+        turret.GetComponent<Turret>().setScale(v);
+    }
+    public void setColor(Color c)
+    {
+        turret.GetComponent<Turret>().setColor(c);
     }
 }
