@@ -13,6 +13,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform spawnPoint;
 
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI waveCounter;
 
     public float timeBetweenWaves = 2f;
     private float countdown = 2f;
@@ -65,6 +66,7 @@ public class WaveSpawner : MonoBehaviour
 
             PlayerStats.Rounds++;
             waveNumber++;
+            waveCounter.text = waveNumber + " WAVE";
         }
 
 
